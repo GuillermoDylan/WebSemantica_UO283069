@@ -1,4 +1,5 @@
-@prefix ex: <http://example.org/> .
+@prefix uo: <http://uniovi.es/miw/uo283069/entity/> .
+@prefix uop: <http://uniovi.es/miw/uo283069/property/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix schema: <http://schema.org/> .
 @prefix wd: <http://www.wikidata.org/entity/> .
@@ -10,227 +11,225 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix vgo: <http://purl.org/net/VideoGameOntology#> .
 
-ex:Lain_Iwakura a schema:Person ;
+uo:Lain_Iwakura a schema:Person ;
     schema:name "Lain Iwakura"@en, "岩倉 レイン"@ja ;
     foaf:gender "Female" ;
     foaf:age 14 ;
-    schema:parent ex:YasuoIwakura ;
-    schema:parent ex:MihoIwakura ;
-    schema:sibling ex:MikaIwakura ;
-    schema:follows ex:MasamiEiri ;
-    ex:characterRole "Main Character" .
+    schema:parent uo:YasuoIwakura ;
+    schema:parent uo:MihoIwakura ;
+    schema:sibling uo:MikaIwakura ;
+    schema:follows uo:MasamiEiri ;
+    uop:characterRole "Main Character" .
 
-ex:YasuoIwakura a schema:Person ;
+uo:YasuoIwakura a schema:Person ;
     schema:name "Yasuo Iwakura"@en, "岩倉 康男"@ja ;
     foaf:gender "Male" ;
     foaf:age 45 ;
-    schema:employmentUnit ex:TachibanaLabs ;
+    schema:employmentUnit uo:TachibanaLabs ;
     schema:hasOccupation [ 
         a schema:Occupation ;
         schema:name "Computer Programmer" ;
         schema:occupationalCategory "15-1251.00"
     ] ;
-    schema:children ex:MikaIwakura ;
-    schema:children ex:Lain_Iwakura .
+    schema:children uo:MikaIwakura ;
+    schema:children uo:Lain_Iwakura .
 
-ex:MihoIwakura a schema:Person ;
+uo:MihoIwakura a schema:Person ;
     schema:name "Miho Iwakura"@en, "岩倉 美穂"@ja ;
     foaf:age 38;
-    schema:employmentUnit ex:TachibanaLabs ;
-    schema:children ex:MikaIwakura ;
-    schema:children ex:Lain_Iwakura .
+    schema:employmentUnit uo:TachibanaLabs ;
+    schema:children uo:MikaIwakura ;
+    schema:children uo:Lain_Iwakura .
 
-ex:MikaIwakura a schema:Person ;
+uo:MikaIwakura a schema:Person ;
     schema:name "Mika Iwakura"@en, "岩倉 美香"@ja ;
     foaf:age 16 ;
-    schema:sibling ex:Lain_Iwakura ;
-    schema:parent ex:MihoIwakura ;
-    schema:parent ex:YasuoIwakura .
+    schema:sibling uo:Lain_Iwakura ;
+    schema:parent uo:MihoIwakura ;
+    schema:parent uo:YasuoIwakura .
 
-ex:God a rdfs:Class ;
+uo:God a rdfs:Class ;
     rdfs:label "God" ;
     rdfs:comment "An omnipresent being who has at least one follower." .
 
-ex:TachibanaLabs a schema:Organization ;
+uo:TachibanaLabs a schema:Organization ;
     schema:name "Tachibana General Laboratories" ;
-    schema:location ex:Tokyo .
+    schema:location uo:Tokyo .
 
-ex:MasamiEiri a schema:Person, ex:God ;
+uo:MasamiEiri a schema:Person, uo:God ;
     schema:name "Masami Eiri"@en, "英利 政美"@ja ;
     foaf:gender "Male" ;
     foaf:age 30 ;
-    schema:employmentUnit ex:TachibanaLabs ;
-    schema:deathPlace ex:Tokyo ;
+    schema:employmentUnit uo:TachibanaLabs ;
+    schema:deathPlace uo:Tokyo ;
     schema:hasOccupation [
         a schema:Occupation ;
         schema:name "Computer Programmer" ;
         schema:occupationalCategory "15-1251.00"
     ] .
 
-ex:Tokyo a schema:City, schema:City ;  # Tokyo is both a Schema.org City and Wikidata entity
+uo:Tokyo a schema:City; 
     rdfs:label "Tokyo" ;
     owl:sameAs wd:Q1490 ;  # Wikidata entity
     schema:alternateName "東京都"@ja ;  # Japanese name
     schema:containedInPlace wd:Q17 ;  # Japan (Wikidata entity)
     schema:latitude "35.6895"^^xsd:float ;
-    schema:longitude "139.6917"^^xsd:float ;
-    foaf:depiction <https://upload.wikimedia.org/wikipedia/commons/9/9e/Tokyo_Skyline.jpg> .
+    schema:longitude "139.6917"^^xsd:float .
 
-ex:Protocol6 a wd:Q15836568 ;
+uo:Protocol6 a wd:Q15836568 ;
     schema:name "Protocol 6" ;
     schema:version 6 ;
-    ex:references wd:Q2551624 ;
-    ex:grantsAccessTo ex:TheWired .
+    uop:references wd:Q2551624 ;
+    uop:grantsAccessTo uo:TheWired .
 
-ex:Protocol7 a wd:Q15836568 ; # Computer network protocol
+uo:Protocol7 a wd:Q15836568 ; # Computer network protocol
     schema:name "Protocol 7" ;
     schema:version 7 ;
-    ex:references wd:Q28823658 ;
-    schema:creator ex:MasamiEiri ;
-    ex:worksThrough ex:SchumannResonances ;
-    ex:grantsAccessTo ex:TheWired .
+    uop:references wd:Q28823658 ;
+    schema:creator uo:MasamiEiri ;
+    uo:worksThrough uo:SchumannResonances ;
+    uop:grantsAccessTo uo:TheWired .
 
-ex:PsycheChip a schema:Product ;
+uo:PsycheChip a schema:Product ;
     schema:name "Psyche Chip" ;
-    ex:usesProtocol ex:Protocol7 ;
-    schema:manufacturer ex:KnightsoftheEasternCalculus .
+    uop:usesProtocol uo:Protocol7 ;
+    schema:manufacturer uo:KnightsoftheEasternCalculus .
 
-ex:KnightsoftheEasternCalculus a schema:Organization ;
+uo:KnightsoftheEasternCalculus a schema:Organization ;
     schema:name "Knights of the Eastern Calculus" ;
-    ex:references wd:Q6422517 ;
-    schema:location ex:Tokyo .
+    uop:references wd:Q6422517 ;
+    schema:location uo:Tokyo .
 
-ex:CoplandOS a dpedia:Operating_system ;
+uo:CoplandOS a dpedia:Operating_system ;
     schema:name "Copland OS" ;
-    schema:creator ex:TachibanaLabs ;
-    ex:references wd:Q1131259 .
+    schema:creator uo:TachibanaLabs ;
+    uop:references wd:Q1131259 .
 
-ex:CommunicationOperatingSystem a dpedia:Operating_system ;
+uo:CommunicationOperatingSystem a dpedia:Operating_system ;
     rdfs:label "Communication Operating System" ;
     rdfs:comment "An operating system designed for communication purposes." .
 
 # Fun Fact: The first Navi Lain uses in the series is based after the 20th anniversary Macintosh.
-ex:NAVI a dpedia:Computer ;
+uo:NAVI a dpedia:Computer ;
     schema:name "Knowledge Navigator", "NAVI" ;
-    // TODO
-    schema:manufacturer ex:TachibanaLabs ;
-    ex:versions (ex:NaviV1 ex:Navi2 ex:Navi3) .
+    schema:manufacturer uo:TachibanaLabs ;
+    uo:versions (uo:NaviV1 uo:Navi2 uo:Navi3) .
 
-ex:NaviV1 a ex:NAVI; 
+uo:NaviV1 a uo:NAVI; 
     schema:name "Child's NAVI" ;
     schema:version 1 ;
-    schema:creator ex:TachibanaLabs ;
-    ex:usesProtocol ex:Protocol6 ;
-    ex:references wd:Q2141790 ;
-    schema:operatingSystem ex:CommunicationOperatingSystem .
+    schema:creator uo:TachibanaLabs ;
+    uop:usesProtocol uo:Protocol6 ;
+    uop:references wd:Q2141790 ;
+    schema:operatingSystem uo:CommunicationOperatingSystem .
 
-ex:Navi2 a ex:NAVI; 
+uo:Navi2 a uo:NAVI; 
     schema:name "NAVI" ;
     schema:version 2 ;
-    schema:creator ex:TachibanaLabs ;
-    ex:usesProtocol ex:Protocol7 ;
-    ex:hasComponent ex:PsycheChip ;
-    ex:references wd:Q306381 ;
+    schema:creator uo:TachibanaLabs ;
+    uop:usesProtocol uo:Protocol7 ;
+    uop:hasComponent uo:PsycheChip ;
+    uop:references wd:Q306381 ;
     owl:sameAs wd:Q380574 ;
-    schema:operatingSystem ex:CoplandOS .
+    schema:operatingSystem uo:CoplandOS .
 
-ex:Navi3 a ex:NAVI; 
+uo:Navi3 a uo:NAVI; 
     schema:name "HandiNAVI" ;
     schema:alternateName "Handheld NAVI" ;
     schema:version 3 ;
-    schema:creator ex:TachibanaLabs ;
-    ex:references wd:Q420772 ;
-    schema:operatingSystem ex:CoplandOS .
+    schema:creator uo:TachibanaLabs ;
+    uop:references wd:Q420772 ;
+    schema:operatingSystem uo:CoplandOS .
 
-ex:TheWired a dpedia:Computer_network ;
+uo:TheWired a dpedia:Computer_network ;
     rdfs:subClassOf dpedia:Virtual_reality ;
     schema:name "The Wired" ;
-    ex:references wd:Q466 .
+    uop:references wd:Q466 .
 
-ex:ProfessorHodgeson a schema:Person ;
+uo:ProfessorHodgeson a schema:Person ;
     schema:name "Professor Hodgeson"@en ;
-    schema:deathPlace ex:Tokyo ;
+    schema:deathPlace uo:Tokyo ;
     schema:hasOccupation [
         a schema:Occupation ;
         schema:name "Scientist" ;
         schema:occupationalCategory "19-1029.01"
     ] ;
-    schema:affiliation ex:TachibanaLabs .
+    schema:employmentUnit uo:TachibanaLabs .
 
-ex:KensingtonExperiment a schema:Event ;
-    schema:name "Kensington Experiment" ;
-    schema:location ex:Tokyo ;
-    schema:director ex:ProfessorHodgeson ;
-    ex:references wd:Q496036 ;
-    rdfs:comment "An experiment conducted by Professor Hodgeson  to harness the latent para-psychological abilities of children that resulted in multiple casualties." .
+uo:Kensingtonuoperiment a schema:Event ;
+    schema:name "Kensington uoperiment" ;
+    schema:location uo:Tokyo ;
+    schema:director uo:ProfessorHodgeson ;
+    uop:references wd:Q496036 ;
+    rdfs:comment "An uoperiment conducted by Professor Hodgeson  to harness the latent para-psychological abilities of children that resulted in multiple casualties." .
 
-ex:KIDS a dpedia:Electrical_device;
+uo:KIDS a dpedia:Electrical_device;
     schema:name "KIDS System" ;
-    schema:location ex:Tokyo ;
-    schema:creator ex:ProfessorHodgeson .
+    schema:location uo:Tokyo ;
+    schema:creator uo:ProfessorHodgeson .
 
-ex:PHANTOMa a schema:VideoGame ;
+uo:PHANTOMa a schema:VideoGame ;
     schema:name "PHANTOMa" ;
-    vgo:hasGameGenere ex:MMORPG ;
+    vgo:hasGameGenere uo:MMORPG ;
     foaf:image <https://lain.wiki/wiki/File:1669_900.png> ;
-    schema:device ex:KIDS .
+    schema:device uo:KIDS .
 
-ex:MMORPG a vgo:GameGenre ;
+uo:MMORPG a vgo:GameGenre ;
     rdfs:label "MMORPG" ;
     owl:sameAs wd:Q175173 ;
     rdfs:comment "A genre of video games that are played online with a large number of players." .
 
-ex:Mebious a schema:WebPage ;
+uo:Mebious a schema:WebPage ;
     schema:name "Mebious.co.uk" ;
     rdfs:comment "A website on the Wired." ;
-    schema:creator ex:Lain_Iwakura ;
+    schema:creator uo:Lain_Iwakura ;
     schema:significantLink <http://www.mebious.co.uk/> ;
     schema:significantLink <http://www.mebious.mobi/> .
 
-ex:MenInBlack a schema:Organization ;
+uo:MenInBlack a schema:Organization ;
     schema:name "Men in Black" ;
-    ex:references wd:Q51410 ;
-    schema:founder [ a schema:Person ; schema:name "Kurosawa"@en, "黒沢"@ja; schema:employmentUnit ex:TachibanaLabs ] ;
-    ex:location ex:Tokyo .
+    uop:references wd:Q51410 ;
+    schema:founder [ a schema:Person ; schema:name "Kurosawa"@en, "黒沢"@ja; schema:employmentUnit uo:TachibanaLabs ] ;
+    uop:location uo:Tokyo .
 
-ex:KarlHaushofer a schema:Person ;
+uo:KarlHaushofer a schema:Person ;
     schema:name "Karl Haushofer"@en ;
-    schema:deathPlace ex:Tokyo ;
+    schema:deathPlace uo:Tokyo ;
     schema:hasOccupation [
         a schema:Occupation ;
         schema:name "Spy" ;
         schema:occupationalCategory "33-3021.00"
     ] ;
-    schema:employmentUnit ex:MenInBlack .
+    schema:employmentUnit uo:MenInBlack .
 
-ex:LinSuiXi a schema:Person ;
+uo:LinSuiXi a schema:Person ;
     schema:name "Lin Sui-Xi"@en ;
-    schema:deathPlace ex:Tokyo ;
+    schema:deathPlace uo:Tokyo ;
     schema:hasOccupation [
         a schema:Occupation ;
         schema:name "Spy" ;
         schema:occupationalCategory "33-3021.00"
     ] ;
-    schema:employmentUnit ex:MenInBlack .
+    schema:employmentUnit uo:MenInBlack .
 
-ex:CRowView.CL a ex:ComputerCode ;
+uo:CRowView.CL a uo:ComputerCode ;
     schema:name "CRowView.CL" ;
     rdfs:comment "CRowView.CL contains code for John Conway's Game of Life." ;
     foaf:image <https://lain.wiki/wiki/File:Life.jpg> ;
-    schema:creator ex:Lain_Iwakura ;
-    ex:references wd:Q244615;
+    schema:creator uo:Lain_Iwakura ;
+    uop:references wd:Q244615;
     schema:programmingLanguage  wd:Q849146 .
 
-ex:Afx-n-nPrv-View.CL a ex:ComputerCode ;
+uo:Afx-n-nPrv-View.CL a uo:ComputerCode ;
     schema:name "Afx-n-nPrv-View.CL" ;
     rdfs:comment "Afx-n-nPrv-View.CL is the source for a code walker." ;
     foaf:image <https://lain.wiki/wiki/File:Walker.jpg> ;
-    schema:creator ex:Lain_Iwakura ;
-    ex:references wd:Q312 ;
+    schema:creator uo:Lain_Iwakura ;
+    uop:references wd:Q312 ;
     schema:programmingLanguage  wd:Q849146 .
 
-ex:SchumannResonances a wd:Q1293220 ;
+uo:SchumannResonances a wd:Q1293220 ;
     schema:name "Schumann Resonances" ;
-	ex:references wd:Q916906 ;
+	uop:references wd:Q916906 ;
 	owl:sameAs wd:Q916906 ;
-    rdfs:comment "A set of spectrum peaks in the extremely low frequency portion of the Earth's electromagnetic field spectrum." .
+    rdfs:comment "A set of spectrum peaks in the uotremely low frequency portion of the Earth's electromagnetic field spectrum." .

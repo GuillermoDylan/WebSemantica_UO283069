@@ -1,23 +1,22 @@
+const prefixes = {
+    'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+    'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
+    'owl': 'http://www.w3.org/2002/07/owl#',
+    'xsd': 'http://www.w3.org/2001/XMLSchema#',
+    'ex': 'http://example.org/',
+    'schema': 'http://schema.org/'
+};
+
+const urls = {
+    'http://www.w3.org/1999/02/22-rdf-syntax-ns#': 'rdf',
+    'http://www.w3.org/2000/01/rdf-schema#': 'rdfs',
+    'http://www.w3.org/2002/07/owl#': 'owl',
+    'http://www.w3.org/2001/XMLSchema#': 'xsd',
+    'http://example.org/': 'ex',
+    'http://schema.org/': 'schema'
+};
+
 export const prefixResolver = (prefix) => {
-
-    const prefixes = {
-        'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-        'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
-        'owl': 'http://www.w3.org/2002/07/owl#',
-        'xsd': 'http://www.w3.org/2001/XMLSchema#',
-        'ex': 'http://example.org/',
-        'schema': 'http://schema.org/'
-    };
-
-    const urls = {
-        'http://www.w3.org/1999/02/22-rdf-syntax-ns#': 'rdf',
-        'http://www.w3.org/2000/01/rdf-schema#': 'rdfs',
-        'http://www.w3.org/2002/07/owl#': 'owl',
-        'http://www.w3.org/2001/XMLSchema#': 'xsd',
-        'http://example.org/': 'ex',
-        'http://schema.org/': 'schema'
-    };
-
     if(prefix.includes(':')) {
         return urls[prefix];
     }
@@ -117,4 +116,23 @@ export const fetchRandomPersonNode = async (blackList) => {
     }
     personNode = personNode.replace('ex:', 'http://example.org/');
     return personNode;
+}
+
+export const searchNode = async (node) => {
+    const query = `
+        PREFIX schema: <http://schema.org/>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        SELECT DISTINCT ?name ?subject
+        WHERE {
+            VALUES ?property { schema:name rdfs:label }
+            ?subject ?property ?name .
+            FILTER (regex(str(?subject), "${node}", "i"))
+        }
+    `;
+    const data = await fetchQuery(query);
+    let res = data.results.bindings.map(binding => ({
+        label: binding.name?.value || null,
+        uri: binding.subject?.value || null
+    }));
+    return res;
 }

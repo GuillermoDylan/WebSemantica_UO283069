@@ -1,0 +1,24 @@
+BASE <http://uniovi.es/miw/uo283069/shapes>
+IMPORT <SchemaCharacter>
+IMPORT <SchemaOccupation>
+IMPORT <SchemaOrganization>
+
+PREFIX schema: <http://schema.org/>
+PREFIX uop: <http://uniovi.es/miw/uo283069/property/> .
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+<SchemaCharacter> {
+    a [schema:Person] ;
+    schema:name xsd:string ;
+    schema:gender xsd:string ;
+    foaf:age xsd:integer ;
+    schema:parent <SchemaCharacter>* ;
+    schema:sibling <SchemaCharacter>* ;
+    schema:children <SchemaCharacter>* ;
+    schema:follows <SchemaCharacter>* ;
+    uop:characterRole xsd:string+ ;
+    schema:hasOccupation <SchemaOccupation>* ;
+    schema:employmentUnit <SchemaOrganization> ? ;
+    schema:deathPlace <SchemaLocation> ?  ;
+}

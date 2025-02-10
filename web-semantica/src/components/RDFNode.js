@@ -5,7 +5,7 @@ import PersonNode from './PersonNode';
 import OrganizationNode from './OrganizationNode';
 import ItemNode from './ItemNode';
 
-const RDFNode = () => {
+const RDFNode = ({ searchedNode, setSearchedNode } = {}) => {
   const [nodeId, setNodeId ] = useState('ex:Lain_Iwakura');
   const [nodeData, setNodeData] = useState(null);
   const [relationships, setRelationships] = useState({});
@@ -15,12 +15,16 @@ const RDFNode = () => {
 
   useEffect(() => {
     const fetchDataAsync = async () => {
-      const { nodeId: fetchedNodeId, relationships } = await fetchData(nodeId);
-      setNodeData({ title: fetchedNodeId });
-      setRelationships(relationships);
+      if (searchedNode) {
+        handleUriTransition(searchedNode);
+      }else {
+        const { nodeId: fetchedNodeId, relationships } = await fetchData(nodeId);
+        setNodeData({ title: fetchedNodeId });
+        setRelationships(relationships);
+      }
     };
     fetchDataAsync();
-  }, [nodeId]);
+  }, [nodeId, searchedNode]);
 
   if (!nodeData) {
     return <div>Loading...</div>;
@@ -90,18 +94,21 @@ const RDFNode = () => {
     setTransitionState(false);
     await loadNode(getRelationshipValues(relation)[0]);
     setTransitionState(true);
+    setSearchedNode(undefined);
   }
 
   const handleUriTransition = async (data) => {
     setTransitionState(false);
     await loadNode(data);
     setTransitionState(true);
+    setSearchedNode(undefined);
   }
   
   const handleBackwardsTransition = async () => {
     setTransitionState(false);
     await loadPreviousNode();
     setTransitionState(true);
+    setSearchedNode(undefined);
   }
 
   const checkIsItem = (URI) => {
