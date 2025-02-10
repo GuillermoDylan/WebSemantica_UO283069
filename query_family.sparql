@@ -1,0 +1,32 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?person ?personName (GROUP_CONCAT(DISTINCT ?relation; separator=", ") AS ?relations) (GROUP_CONCAT(DISTINCT ?relativeName; separator=", ") AS ?relatives)
+WHERE {
+  ?person schema:name ?personName .
+  FILTER (LANG(?personName) = "en")
+
+  {
+    ?person schema:parent ?relative .
+    ?relative schema:name ?relativeName .
+    FILTER (LANG(?relativeName) = "en")
+    BIND("Parent" AS ?relation)
+  }
+  UNION
+  {
+    ?person schema:sibling ?relative .
+    ?relative schema:name ?relativeName .
+    FILTER (LANG(?relativeName) = "en")
+    BIND("Sibling" AS ?relation)
+  }
+  UNION
+  {
+    ?person schema:children ?relative .
+    ?relative schema:name ?relativeName .
+    FILTER (LANG(?relativeName) = "en")
+    BIND("Child" AS ?relation)
+  }
+}
+GROUP BY ?person ?personName
+ORDER BY ?personName ?relation

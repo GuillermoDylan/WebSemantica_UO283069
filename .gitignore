@@ -169,3 +169,26 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+Evaluación Web Semántica MUINGWEB 2024-2025.pdf
+datos_hoyo_pinares.bk
+Protege-5.6.5/*
+web-semantica/node_modules
+web-semantica/.pnp
+web-semantica/.pnp.js
+
+# testing
+web-semantica/coverage
+
+# production
+web-semantica/build
+
+# misc
+web-semantica/.DS_Store
+web-semantica/.env.local
+web-semantica/.env.development.local
+web-semantica/.env.test.local
+web-semantica/.env.production.local
+
+web-semantica/npm-debug.log*
+web-semantica/yarn-debug.log*
+web-semantica/yarn-error.log*
