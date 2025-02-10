@@ -1,4 +1,5 @@
 @prefix : <http://www.uniovi.es/miw/uo283069//> .
+@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -12,46 +13,128 @@
 #    Object Properties
 #################################################################
 
-###  http://www.uniovi.es/miw/uo283069/characterRole
+###  http://www.uniovi.es/miw/uo283069//characterRole
 :characterRole rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf owl:topObjectProperty .
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain <http://schema.org/Person> ;
+               rdfs:range [ rdf:type owl:Class ;
+                            owl:unionOf ( [ rdf:type owl:Restriction ;
+                                            owl:onProperty owl:topDataProperty ;
+                                            owl:someValuesFrom rdf:langString
+                                          ]
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty owl:topDataProperty ;
+                                            owl:someValuesFrom xsd:anyURI
+                                          ]
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty owl:topDataProperty ;
+                                            owl:someValuesFrom xsd:string
+                                          ]
+                                        )
+                          ] .
 
 
-###  http://www.uniovi.es/miw/uo283069/grantsAccessTo
+###  http://www.uniovi.es/miw/uo283069//grantsAccessTo
 :grantsAccessTo rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf owl:topObjectProperty .
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain wd:Q132364 ;
+                rdfs:range <http://dbpedia.org/resource/Computer_network> .
 
 
-###  http://www.uniovi.es/miw/uo283069/hasComponent
+###  http://www.uniovi.es/miw/uo283069//hasComponent
 :hasComponent rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty .
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain <http://dbpedia.org/resource/Device> ;
+              rdfs:range <http://dbpedia.org/resource/Device> ,
+                         <http://schema.org/Product> .
 
 
-###  http://www.uniovi.es/miw/uo283069/references
+###  http://www.uniovi.es/miw/uo283069//references
 :references rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty .
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain [ rdf:type owl:Restriction ;
+                          owl:onProperty owl:topDataProperty ;
+                          owl:allValuesFrom xsd:anyURI
+                        ] ;
+            rdfs:range [ rdf:type owl:Restriction ;
+                         owl:onProperty owl:topDataProperty ;
+                         owl:allValuesFrom xsd:anyURI
+                       ] .
 
 
-###  http://www.uniovi.es/miw/uo283069/usesProtocol
+###  http://www.uniovi.es/miw/uo283069//usesProtocol
 :usesProtocol rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty .
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain <http://dbpedia.org/resource/Device> ;
+              rdfs:range wd:Q15836568 .
 
 
-###  http://www.uniovi.es/miw/uo283069/worksThrough
+###  http://www.uniovi.es/miw/uo283069//worksThrough
 :worksThrough rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty .
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain <http://dbpedia.org/resource/Computer_network> ,
+                          <http://dbpedia.org/resource/Device> ,
+                          wd:Q15836568 ;
+              rdfs:range <http://dbpedia.org/resource/Phenomenon> .
 
 
 #################################################################
 #    Classes
 #################################################################
 
+###  http://dbpedia.org/resource/Computer_network
+<http://dbpedia.org/resource/Computer_network> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/resource/Device
+<http://dbpedia.org/resource/Device> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/resource/Phenomenon
+<http://dbpedia.org/resource/Phenomenon> rdf:type owl:Class .
+
+
+###  http://schema.org/Person
+<http://schema.org/Person> rdf:type owl:Class ;
+                           owl:disjointWith :God .
+
+
+###  http://schema.org/Product
+<http://schema.org/Product> rdf:type owl:Class .
+
+
 ###  http://www.uniovi.es/miw/uo283069/ComputerCode
-:ComputerCode rdf:type owl:Class .
+:ComputerCode rdf:type owl:Class ;
+              owl:equivalentClass wd:Q124590 ;
+              rdfs:subClassOf <http://schema.org/Product> ;
+              rdfs:comment "Set of instructions written in a programming language which is made for being executed on a computer."@en ;
+              rdfs:label "Computer code"@en .
 
 
-###  http://www.uniovi.es/miw/uo283069/God
-:God rdf:type owl:Class .
+###  http://www.uniovi.es/miw/uo283069//God
+:God rdf:type owl:Class ;
+     owl:equivalentClass wd:Q178885 .
+
+
+###  http://www.wikidata.org/entity/Q124590
+wd:Q124590 rdf:type owl:Class .
+
+
+###  http://www.wikidata.org/entity/Q132364
+wd:Q132364 rdf:type owl:Class ;
+           rdfs:comment "system for exchanging messages between computing systems"@en ;
+           rdfs:label "communication protocol"@en .
+
+
+###  http://www.wikidata.org/entity/Q15836568
+wd:Q15836568 rdf:type owl:Class ;
+             rdfs:subClassOf wd:Q132364 ;
+             rdfs:comment "communications protocol used by data networks"@en ;
+             rdfs:label "computer network protocol"@en .
+
+
+###  http://www.wikidata.org/entity/Q178885
+wd:Q178885 rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

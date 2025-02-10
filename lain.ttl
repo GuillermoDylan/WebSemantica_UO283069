@@ -229,6 +229,8 @@ ex:Afx-n-nPrv-View.CL a ex:ComputerCode ;
     ex:references wd:Q312 ;
     schema:programmingLanguage  wd:Q849146 .
 
-ex:SchumannResonances a dpedia:Electromagnetic_pulse ;
+ex:SchumannResonances a wd:Q1293220 ;
     schema:name "Schumann Resonances" ;
+	ex:references wd:Q916906 ;
+	owl:sameAs wd:Q916906 ;
     rdfs:comment "A set of spectrum peaks in the extremely low frequency portion of the Earth's electromagnetic field spectrum." .
