@@ -73,7 +73,7 @@ const PersonNode = ({handleBackwardsTransition, handleTransition, renderValues, 
                 {items.length > 1 && (
                   <div>
                     <h3>Creator of:</h3>
-                    <ul>
+                    <ul style={{ listStyleType: "none", padding: 0 }}>
                       {renderValues(items.slice(1))}
                     </ul>
                   </div>

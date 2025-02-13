@@ -1,0 +1,65 @@
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX uop: <http://uniovi.es/miw/uo283069/property/> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX uo: <http://uniovi.es/miw/uo283069/entity/>
+
+<SchemaOrganization> {
+  a [schema:Organization] ;
+  schema:name xsd:string ;
+  schema:founder {
+    a [schema:Person] ; 
+    schema:name rdf:langString * ; 
+    schema:employmentUnit @<SchemaOrganization> ? ; 
+    foaf:gender xsd:string ? ;
+  } ? ;
+  uop:location @<SchemaLocation> ? ;
+}
+
+<SchemaCharacter>{
+  a [schema:Person uo:God] {1,2} ;
+  schema:name rdf:langString + ;
+  foaf:gender xsd:string + ;
+  foaf:age xsd:integer ;
+  schema:parent @<SchemaCharacter> * ;
+  schema:sibling @<SchemaCharacter> * ;
+  schema:children @<SchemaCharacter> * ;
+  schema:follows @<SchemaCharacter> * ;
+  uop:characterRole xsd:string + ;
+  schema:hasOccupation @<SchemaOccupation> ? ;
+  schema:employmentUnit @<SchemaOrganization> ? ;
+  schema:deathPlace @<SchemaLocation> ?  ;
+}
+
+<SchemaLocation> {
+  a [schema:City] ;
+  rdfs:label xsd:string ;
+  schema:containedInPlace IRI ;
+  schema:latitude xsd:float ;
+  schema:longitude xsd:float ;
+}
+
+<SchemaOccupation> {
+  a [schema:Occupation] ;
+  schema:name xsd:string ;
+  schema:occupationalCategory xsd:string ;
+}
+
+<ComputerCodeShape>{
+  a [uo:ComputerCode] ;
+  schema:name xsd:string + ;
+  rdfs:comment xsd:string * ;
+  schema:creator @<SchemaCharacter> ;
+  schema:programmingLanguage IRI  + ;
+  foaf:image IRI * ;
+}
+
+<CreatedItemShape>{ 
+  (schema:creator @<SchemaCharacter> | schema:manufacturer 	 @<SchemaOrganization>);
+  schema:name xsd:string + ;
+  uo:versions <CreatedItem> * ;
+  schema:version xsd:integer ? ;
+}

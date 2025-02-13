@@ -1,0 +1,17 @@
+BASE <http://uniovi.es/miw/uo283069/shapes>
+IMPORT <SchemaCharacter>
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX uo: <http://uniovi.es/miw/uo283069/entity/>
+
+<ComputerCodeShape>{
+    a [uo:ComputerCode] ;
+    schema:name xsd:string + ;
+    rdfs:comment xsd:string * ;
+    schema:creator @<SchemaCharacter> ;
+    schema:programmingLanguage IRI  + ;
+    foaf:image URL * ;
+}

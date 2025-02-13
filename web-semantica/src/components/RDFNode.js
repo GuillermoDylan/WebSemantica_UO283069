@@ -35,7 +35,6 @@ const RDFNode = ({ searchedNode, setSearchedNode } = {}) => {
   };
 
   const renderValues = (values) => {
-    console.log(values);
     return values.map((value, index) => {
       if (value.startsWith('http://') || value.startsWith('https://')) {
       let displayValue = "";
@@ -75,6 +74,12 @@ const RDFNode = ({ searchedNode, setSearchedNode } = {}) => {
     setNodeId(newId); // Update the node id
     const { fetchedNodeId, relationships } = await fetchData(newId);
     setNodeData({ title: fetchedNodeId });
+    const updatedRelationships = {};
+    for (const [key, values] of Object.entries(relationships)) {
+      const updatedKey = key.includes('#') ? key.split('#').pop() : key;
+      updatedRelationships[updatedKey] = values;
+    }
+    setRelationships(updatedRelationships);
     setRelationships(relationships);
   };
   
@@ -136,7 +141,7 @@ const RDFNode = ({ searchedNode, setSearchedNode } = {}) => {
 
             {getRelationshipValues("type").includes('http://schema.org/Organization') &&     
               <OrganizationNode nodeId={nodeId} handleBackwardsTransition={handleBackwardsTransition} handleTransition={handleTransition} 
-              renderValues={renderValues} getRelationshipValues={getRelationshipValues} />
+              renderValues={renderValues} getRelationshipValues={getRelationshipValues} handleUriTransition={handleUriTransition}/>
             }
 
             {checkIsItem(getRelationshipValues("type")) &&

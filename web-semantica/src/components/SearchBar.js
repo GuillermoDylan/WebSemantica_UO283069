@@ -32,11 +32,14 @@ const SearchBar = ({setSearchedNode}) => {
                     setSearchQuery(newInputValue);
                     setFilteredResults(searchResults.filter((result) => result.label.toLowerCase().includes(newInputValue.toLowerCase())));
                 }}
-                renderInput={(params) => <TextField {...params} label="Movie" />}
+                renderInput={(params) => <TextField {...params} label="Node searcher" />}
             />
             <Button variant="contained" href="#contained-buttons" sx={{marginTop: 5, marginLeft: 2}}
             onClick={() => {
-                setSearchedNode(filteredResults.find(result => result.label === searchQuery).uri);
+                var search = filteredResults.find(result => result.label === searchQuery);
+                if(search){
+                    setSearchedNode(search.uri);
+                }
             }}>
                 Search
             </Button>

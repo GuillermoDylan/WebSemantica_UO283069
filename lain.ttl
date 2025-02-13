@@ -1,3 +1,4 @@
+@prefix sc: <http://purl.org/science/owl/sciencecommons/> .
 @prefix uo: <http://uniovi.es/miw/uo283069/entity/> .
 @prefix uop: <http://uniovi.es/miw/uo283069/property/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -6,19 +7,21 @@
 @prefix dpedia: <http://dbpedia.org/resource/> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix onet: <https://www.onetonline.org/link/summary/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix vgo: <http://purl.org/net/VideoGameOntology#> .
 
 uo:Lain_Iwakura a schema:Person ;
-    schema:name "Lain Iwakura"@en, "岩倉 レイン"@ja ;
+    schema:name "Lain Iwakura"@en, "岩倉 レイン"@ja;
     foaf:gender "Female" ;
     foaf:age 14 ;
     schema:parent uo:YasuoIwakura ;
     schema:parent uo:MihoIwakura ;
     schema:sibling uo:MikaIwakura ;
     schema:follows uo:MasamiEiri ;
+    owl:sameAs wd:Q112631434 ;
     uop:characterRole "Main Character" .
 
 uo:YasuoIwakura a schema:Person ;
@@ -32,25 +35,26 @@ uo:YasuoIwakura a schema:Person ;
         schema:occupationalCategory "15-1251.00"
     ] ;
     schema:children uo:MikaIwakura ;
-    schema:children uo:Lain_Iwakura .
+    schema:children uo:Lain_Iwakura ;
+    uop:characterRole "Secondary Character" .
 
 uo:MihoIwakura a schema:Person ;
     schema:name "Miho Iwakura"@en, "岩倉 美穂"@ja ;
+    foaf:gender "Female" ;
     foaf:age 38;
     schema:employmentUnit uo:TachibanaLabs ;
     schema:children uo:MikaIwakura ;
-    schema:children uo:Lain_Iwakura .
+    schema:children uo:Lain_Iwakura ; 
+    uop:characterRole "Secondary Character" .
 
 uo:MikaIwakura a schema:Person ;
     schema:name "Mika Iwakura"@en, "岩倉 美香"@ja ;
+    foaf:gender "Female" ;
     foaf:age 16 ;
     schema:sibling uo:Lain_Iwakura ;
     schema:parent uo:MihoIwakura ;
-    schema:parent uo:YasuoIwakura .
-
-uo:God a rdfs:Class ;
-    rdfs:label "God" ;
-    rdfs:comment "An omnipresent being who has at least one follower." .
+    schema:parent uo:YasuoIwakura ;
+    uop:characterRole "Secondary Character" .
 
 uo:TachibanaLabs a schema:Organization ;
     schema:name "Tachibana General Laboratories" ;
@@ -66,7 +70,8 @@ uo:MasamiEiri a schema:Person, uo:God ;
         a schema:Occupation ;
         schema:name "Computer Programmer" ;
         schema:occupationalCategory "15-1251.00"
-    ] .
+    ] ;
+    uop:characterRole "Antagonist" .
 
 uo:Tokyo a schema:City; 
     rdfs:label "Tokyo" ;
@@ -102,7 +107,7 @@ uo:KnightsoftheEasternCalculus a schema:Organization ;
 
 uo:CoplandOS a dpedia:Operating_system ;
     schema:name "Copland OS" ;
-    schema:creator uo:TachibanaLabs ;
+    schema:manufacturer uo:TachibanaLabs ;
     uop:references wd:Q1131259 .
 
 uo:CommunicationOperatingSystem a dpedia:Operating_system ;
@@ -113,12 +118,12 @@ uo:CommunicationOperatingSystem a dpedia:Operating_system ;
 uo:NAVI a dpedia:Computer ;
     schema:name "Knowledge Navigator", "NAVI" ;
     schema:manufacturer uo:TachibanaLabs ;
-    uo:versions (uo:NaviV1 uo:Navi2 uo:Navi3) .
+    uop:versions (uo:NaviV1 uo:Navi2 uo:Navi3) .
 
 uo:NaviV1 a uo:NAVI; 
     schema:name "Child's NAVI" ;
     schema:version 1 ;
-    schema:creator uo:TachibanaLabs ;
+    schema:manufacturer uo:TachibanaLabs ;
     uop:usesProtocol uo:Protocol6 ;
     uop:references wd:Q2141790 ;
     schema:operatingSystem uo:CommunicationOperatingSystem .
@@ -126,7 +131,7 @@ uo:NaviV1 a uo:NAVI;
 uo:Navi2 a uo:NAVI; 
     schema:name "NAVI" ;
     schema:version 2 ;
-    schema:creator uo:TachibanaLabs ;
+    schema:manufacturer uo:TachibanaLabs ;
     uop:usesProtocol uo:Protocol7 ;
     uop:hasComponent uo:PsycheChip ;
     uop:references wd:Q306381 ;
@@ -137,7 +142,7 @@ uo:Navi3 a uo:NAVI;
     schema:name "HandiNAVI" ;
     schema:alternateName "Handheld NAVI" ;
     schema:version 3 ;
-    schema:creator uo:TachibanaLabs ;
+    schema:manufacturer uo:TachibanaLabs ;
     uop:references wd:Q420772 ;
     schema:operatingSystem uo:CoplandOS .
 
@@ -148,20 +153,23 @@ uo:TheWired a dpedia:Computer_network ;
 
 uo:ProfessorHodgeson a schema:Person ;
     schema:name "Professor Hodgeson"@en ;
+    foaf:gender "Male" ;
+    foaf:age 60 ;
     schema:deathPlace uo:Tokyo ;
     schema:hasOccupation [
         a schema:Occupation ;
         schema:name "Scientist" ;
         schema:occupationalCategory "19-1029.01"
     ] ;
-    schema:employmentUnit uo:TachibanaLabs .
+    schema:employmentUnit uo:TachibanaLabs ;
+    uop:characterRole "Secondary Character" .
 
 uo:Kensingtonuoperiment a schema:Event ;
     schema:name "Kensington uoperiment" ;
     schema:location uo:Tokyo ;
     schema:director uo:ProfessorHodgeson ;
     uop:references wd:Q496036 ;
-    rdfs:comment "An uoperiment conducted by Professor Hodgeson  to harness the latent para-psychological abilities of children that resulted in multiple casualties." .
+    rdfs:comment "An experiment conducted by Professor Hodgeson  to harness the latent para-psychological abilities of children that resulted in multiple casualties." .
 
 uo:KIDS a dpedia:Electrical_device;
     schema:name "KIDS System" ;
@@ -189,28 +197,34 @@ uo:Mebious a schema:WebPage ;
 uo:MenInBlack a schema:Organization ;
     schema:name "Men in Black" ;
     uop:references wd:Q51410 ;
-    schema:founder [ a schema:Person ; schema:name "Kurosawa"@en, "黒沢"@ja; schema:employmentUnit uo:TachibanaLabs ] ;
+    schema:founder [ a schema:Person ; schema:name "Kurosawa"@en, "黒沢"@ja; foaf:gender "Male" ; schema:employmentUnit uo:TachibanaLabs ; ] ;
     uop:location uo:Tokyo .
 
 uo:KarlHaushofer a schema:Person ;
     schema:name "Karl Haushofer"@en ;
+    foaf:gender "Male" ;
+    foaf:age 32 ;
     schema:deathPlace uo:Tokyo ;
     schema:hasOccupation [
         a schema:Occupation ;
         schema:name "Spy" ;
         schema:occupationalCategory "33-3021.00"
     ] ;
-    schema:employmentUnit uo:MenInBlack .
+    schema:employmentUnit uo:MenInBlack ;
+    uop:characterRole "Secondary Character" .
 
 uo:LinSuiXi a schema:Person ;
     schema:name "Lin Sui-Xi"@en ;
+    foaf:gender "Male" ;
+    foaf:age 35 ;
     schema:deathPlace uo:Tokyo ;
     schema:hasOccupation [
         a schema:Occupation ;
         schema:name "Spy" ;
         schema:occupationalCategory "33-3021.00"
     ] ;
-    schema:employmentUnit uo:MenInBlack .
+    schema:employmentUnit uo:MenInBlack ;
+    uop:characterRole "Secondary Character" .
 
 uo:CRowView.CL a uo:ComputerCode ;
     schema:name "CRowView.CL" ;

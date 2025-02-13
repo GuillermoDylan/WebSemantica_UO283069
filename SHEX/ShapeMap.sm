@@ -1,0 +1,22 @@
+SPARQL"""
+PREFIX schema: <http://schema.org/>
+select ?node where{
+	?node a schema:Person .
+	FILTER(isIRI(?node))
+}
+"""@<SchemaCharacter>,
+uo:Tokyo@<SchemaLocation>,
+SPARQL """
+PREFIX schema: <http://schema.org/>
+PREFIX uop: <http://uniovi.es/miw/uo283069/property/> 
+select ?node where {
+?node a schema:Organization
+}
+"""@<SchemaOrganization>,
+{FOCUS a uo:ComputerCode}@<ComputerCodeShape>,
+SPARQL"""
+PREFIX schema: <http://schema.org/>
+select ?item where {
+?item schema:creator ?person
+}
+"""@<CreatedItemShape>

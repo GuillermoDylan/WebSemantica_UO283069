@@ -1,0 +1,10 @@
+PREFIX uop: <http://uniovi.es/miw/uo283069/property/> 
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+<CreatedItemShape>{ 
+  (schema:creator @<SchemaCharacter> | schema:manufacturer 	 @<SchemaOrganization>);
+  schema:name xsd:string + ;
+  uop:versions <CreatedItem> * ;
+  schema:version xsd:integer ? ;
+}

@@ -3,9 +3,10 @@ prefix schema: <http://schema.org/>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <SchemaLocation> {
-    a [schema:City] ;
-    rdfs:label xsd:string ;
-    schema:containedInPlace rdfs:URI ;
-    schema:latitude xsd:float ;
-    schema:longitude xsd:float ;
+  a [schema:City] ;
+  rdfs:label xsd:string ;
+  schema:containedInPlace IRI ;
+  schema:latitude xsd:float ;
+  schema:longitude xsd:float ;
 }
+

@@ -120,10 +120,24 @@ export const fetchRandomPersonNode = async (blackList) => {
 
 export const searchNode = async (node) => {
     const query = `
+        PREFIX ex: <http://example.org/>
         PREFIX schema: <http://schema.org/>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX dbpedia: <http://dbpedia.org/resource/>
+        PREFIX wd: <http://www.wikidata.org/entity/>
         SELECT DISTINCT ?name ?subject
         WHERE {
+            VALUES ?type { 
+                ex:ComputerCode 
+                schema:WebPage 
+                dbpedia:Electrical_device 
+                dbpedia:Computer
+                dbpedia:Operating_system 
+                schema:Product 
+                wd:Q15836568 
+                schema:Person
+                schema:Organization
+            }
             VALUES ?property { schema:name rdfs:label }
             ?subject ?property ?name .
             FILTER (regex(str(?subject), "${node}", "i"))

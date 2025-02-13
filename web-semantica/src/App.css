@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: 'Love Letter TW', cursive;
+  src: url("/resources/Lovelt__.ttf") format("ttf"),
 }
 
 .App-logo {

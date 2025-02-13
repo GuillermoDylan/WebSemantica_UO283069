@@ -1,0 +1,25 @@
+BASE <http://uniovi.es/miw/uo283069/shapes>
+IMPORT <SchemaOrganization>
+IMPORT <SchemaLocation>
+
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX fo: <http://www.w3.org/1999/XSL/Format#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX uop: <http://uniovi.es/miw/uo283069/property/> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX uo: <http://uniovi.es/miw/uo283069/entity/>
+
+<SchemaOrganization> {
+  a [schema:Organization] ;
+  schema:name xsd:string ;
+  schema:founder {
+    a [schema:Person] ; 
+    schema:name rdf:langString * ; 
+    schema:employmentUnit @<SchemaOrganization> ? ; 
+    foaf:gender xsd:string ? ;
+  } ? ;
+  uop:location @<SchemaLocation> ? ;
+}

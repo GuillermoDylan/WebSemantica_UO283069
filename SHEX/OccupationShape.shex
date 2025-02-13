@@ -2,7 +2,7 @@ prefix schema: <http://schema.org/>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <SchemaOccupation> {
-    a schema:Occupation ;
-    schema:name xsd:string ;
-    schema:occupationalCategory xsd:string ;
- }
+  a [schema:Occupation] ;
+  schema:name xsd:string ;
+  schema:occupationalCategory xsd:string ;
+}
