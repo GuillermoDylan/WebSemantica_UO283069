@@ -192,3 +192,5 @@ web-semantica/.env.production.local
 web-semantica/npm-debug.log*
 web-semantica/yarn-debug.log*
 web-semantica/yarn-error.log*
+
+Libros/*

@@ -1,0 +1,73 @@
+@prefix schema: <http://schema.org/> .
+@prefix ex: <http://example.org/lain/> .
+
+ex:LainIwakura a schema:Person ;
+    schema:name "Lain Iwakura" ;
+    schema:age "14" ;
+    schema:familyName "Iwakura" ;
+    schema:parent ex:YasuoIwakura, ex:MihoIwakura ;
+    schema:sibling ex:MikaIwakura ;
+    schema:affiliation ex:KnightsOfTheEasternCalculus, ex:TachibanaGeneralLaboratories ;
+    schema:description "Introverted, shy, quiet, with multiple personalities" ;
+    schema:birthPlace "Shibuya" ;
+    schema:voiceActor "Kaori Shimizu", "Bridget Hoffman", "Lucila Gómez" .
+
+ex:MasamiEiri a schema:Person ;
+    schema:name "Masami Eiri" ;
+    schema:affiliation ex:TachibanaGeneralLaboratories ;
+    schema:role "Key designer of Protocol Seven" ;
+    schema:description "Embedded his consciousness into Protocol Seven to control the Wired" .
+
+ex:YasuoIwakura a schema:Person ;
+    schema:name "Yasuo Iwakura" ;
+    schema:affiliation ex:TachibanaGeneralLaboratories ;
+    schema:role "Lain's father" ;
+    schema:description "Passionate about computers and electronic communication" .
+
+ex:MihoIwakura a schema:Person ;
+    schema:name "Miho Iwakura" ;
+    schema:role "Lain's mother" ;
+    schema:description "Emotionally distant and indifferent towards her children" .
+
+ex:MikaIwakura a schema:Person ;
+    schema:name "Mika Iwakura" ;
+    schema:age "16" ;
+    schema:sibling ex:LainIwakura ;
+    schema:description "Apathetic and mocking towards Lain, experiences traumatic hallucinations" .
+
+ex:AliceMizuki a schema:Person ;
+    schema:name "Alice Mizuki" ;
+    schema:role "Lain's classmate and close friend" ;
+    schema:description "Sincere and supportive, helps Lain socialize" .
+
+ex:Taro a schema:Person ;
+    schema:name "Taro" ;
+    schema:affiliation ex:KnightsOfTheEasternCalculus ;
+    schema:role "A young boy around Lain's age" ;
+    schema:description "Enjoys virtual reality games, values online anonymity" .
+
+ex:KarlHaushofer a schema:Person ;
+    schema:name "Karl Haushofer" ;
+    schema:affiliation ex:TachibanaGeneralLaboratories ;
+    schema:role "Top executive" ;
+    schema:description "Orchestrates the assassination of the Knights" .
+
+ex:MenInBlack a schema:Person ;
+    schema:name "Men in Black" ;
+    schema:affiliation ex:TachibanaGeneralLaboratories ;
+    schema:role "Agents tracking the Knights" .
+
+ex:ChisaYomoda a schema:Person ;
+    schema:name "Chisa Yomoda" ;
+    schema:role "Teenage girl who commits suicide" ;
+    schema:description "Sends emails posthumously, claiming to exist within the Wired" .
+
+ex:ReikaYamamoto a schema:Person ;
+    schema:name "Reika Yamamoto" ;
+    schema:role "Alice's friend from school" ;
+    schema:description "Serious and somewhat mean, harasses Lain" .
+
+ex:JulieKatou a schema:Person ;
+    schema:name "Julie Katou" ;
+    schema:role "Alice's friend" ;
+    schema:description "Insensitive, occasionally harasses Lain" .
