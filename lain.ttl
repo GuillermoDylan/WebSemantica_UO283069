@@ -1,4 +1,3 @@
-@prefix sc: <http://purl.org/science/owl/sciencecommons/> .
 @prefix uo: <http://uniovi.es/miw/uo283069/entity/> .
 @prefix uop: <http://uniovi.es/miw/uo283069/property/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -164,8 +163,8 @@ uo:ProfessorHodgeson a schema:Person ;
     schema:employmentUnit uo:TachibanaLabs ;
     uop:characterRole "Secondary Character" .
 
-uo:Kensingtonuoperiment a schema:Event ;
-    schema:name "Kensington uoperiment" ;
+uo:KensingtonExperiment a schema:Event ;
+    schema:name "Kensington Experiment" ;
     schema:location uo:Tokyo ;
     schema:director uo:ProfessorHodgeson ;
     uop:references wd:Q496036 ;
@@ -183,6 +182,7 @@ uo:PHANTOMa a schema:VideoGame ;
     schema:device uo:KIDS .
 
 uo:MMORPG a vgo:GameGenre ;
+    rdf:subclassOf vgo:GameGenre ;
     rdfs:label "MMORPG" ;
     owl:sameAs wd:Q175173 ;
     rdfs:comment "A genre of video games that are played online with a large number of players." .

@@ -1,3 +1,4 @@
+PREFIX vgo: <http://purl.org/net/VideoGameOntology#>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -58,8 +59,15 @@ PREFIX uo: <http://uniovi.es/miw/uo283069/entity/>
 }
 
 <CreatedItemShape>{ 
-  (schema:creator @<SchemaCharacter> | schema:manufacturer 	 @<SchemaOrganization>);
+  (schema:creator @<SchemaCharacter> | schema:manufacturer @<SchemaOrganization>);
   schema:name xsd:string + ;
-  uo:versions <CreatedItem> * ;
+  uo:versions @<CreatedItemShape> * ;
   schema:version xsd:integer ? ;
+}
+
+<SchemaVideoGame> {
+  rdf:type  [schema:VideoGame] ;
+  schema:name  xsd:string  ;
+  vgo:hasGameGenere {a [vgo:GameGenre]} ;
+  foaf:image  IRI  ?;
 }

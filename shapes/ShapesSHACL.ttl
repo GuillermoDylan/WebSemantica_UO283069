@@ -1,0 +1,208 @@
+PREFIX vgo: <http://purl.org/net/VideoGameOntology#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX uop: <http://uniovi.es/miw/uo283069/property/> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX uo: <http://uniovi.es/miw/uo283069/entity/>
+
+uo:SchemaOrganizationShape a sh:NodeShape ;
+    sh:targetClass schema:Organization ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path schema:founder ;
+        sh:node [
+            sh:property [
+                sh:path rdf:type ;
+                sh:hasValue schema:Person ;
+            ] ;
+            sh:property [
+                sh:path schema:name ;
+                sh:datatype rdf:langString ;
+                sh:minCount 0 ;
+            ] ;
+            sh:property [
+                sh:path schema:employmentUnit ;
+                sh:node uo:SchemaOrganizationShape ;
+                sh:minCount 0 ;
+            ] ;
+            sh:property [
+                sh:path foaf:gender ;
+                sh:datatype xsd:string ;
+                sh:minCount 0 ;
+            ] ;
+        ] ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path uop:location ;
+        sh:node uo:SchemaLocationShape ;
+        sh:minCount 0 ;
+    ] .
+
+uo:SchemaCharacterShape a sh:NodeShape ;
+    sh:targetClass schema:Person, uo:God ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype rdf:langString ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path foaf:gender ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path foaf:age ;
+        sh:datatype xsd:integer ;
+    ] ;
+    sh:property [
+        sh:path schema:parent ;
+        sh:node uo:SchemaCharacterShape ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path schema:sibling ;
+        sh:node uo:SchemaCharacterShape ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path schema:children ;
+        sh:node uo:SchemaCharacterShape ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path schema:follows ;
+        sh:node uo:SchemaCharacterShape ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path uop:characterRole ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:hasOccupation ;
+        sh:node uo:SchemaOccupationShape ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path schema:employmentUnit ;
+        sh:node uo:SchemaOrganizationShape ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path schema:deathPlace ;
+        sh:node uo:SchemaLocationShape ;
+        sh:minCount 0 ;
+    ] .
+
+uo:SchemaLocationShape a sh:NodeShape ;
+    sh:targetClass schema:City ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path schema:containedInPlace ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+    sh:property [
+        sh:path schema:latitude ;
+        sh:datatype xsd:float ;
+    ] ;
+    sh:property [
+        sh:path schema:longitude ;
+        sh:datatype xsd:float ;
+    ] .
+
+uo:SchemaOccupationShape a sh:NodeShape ;
+    sh:targetClass schema:Occupation ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path schema:occupationalCategory ;
+        sh:datatype xsd:string ;
+    ] .
+
+uo:ComputerCodeShape a sh:NodeShape ;
+    sh:targetClass uo:ComputerCode ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path rdfs:comment ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path schema:creator ;
+        sh:node uo:SchemaCharacterShape ;
+    ] ;
+    sh:property [
+        sh:path schema:programmingLanguage ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path foaf:image ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 0 ;
+    ] .
+
+uo:CreatedItemShape a sh:NodeShape ;
+    sh:targetClass uo:NAVI ;
+    sh:targetNode uo:Protocol7, uo:KIDS, uo:Mebious, uo:CRowView.CL, uo:Afx-n-nPrv-View.CL, uo:PsycheChip, uo:CoplandOS, uo:NAVI ;
+    sh:property [
+        sh:path schema:creator ;
+        sh:node uo:SchemaCharacterShape ;
+    ] ;
+    sh:property [
+        sh:path schema:manufacturer ;
+        sh:node uo:SchemaOrganizationShape ;
+    ] ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path uo:versions ;
+        sh:node uo:CreatedItemShape ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path schema:version ;
+        sh:datatype xsd:integer ;
+        sh:minCount 0 ;
+    ] .
+
+uo:SchemaVideoGameShape a sh:NodeShape ;
+    sh:targetClass schema:VideoGame ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path vgo:hasGameGenere ;
+        sh:node [
+            sh:property [
+                sh:path rdf:type ;
+                sh:hasValue vgo:GameGenre ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:path foaf:image ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 0 ;
+    ] .

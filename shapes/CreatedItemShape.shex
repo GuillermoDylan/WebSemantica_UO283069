@@ -3,8 +3,8 @@ PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <CreatedItemShape>{ 
-  (schema:creator @<SchemaCharacter> | schema:manufacturer 	 @<SchemaOrganization>);
+  (schema:creator @<SchemaCharacter> | schema:manufacturer @<SchemaOrganization>);
   schema:name xsd:string + ;
-  uop:versions <CreatedItem> * ;
+  uo:versions @<CreatedItemShape> * ;
   schema:version xsd:integer ? ;
 }

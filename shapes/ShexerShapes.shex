@@ -1,0 +1,259 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ex: <http://example.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX uo: <http://uniovi.es/miw/uo283069/entity/>
+PREFIX uop: <http://uniovi.es/miw/uo283069/property/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX dpedia: <http://dbpedia.org/resource/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX onet: <https://www.onetonline.org/link/summary/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX vgo: <http://purl.org/net/VideoGameOntology#>
+PREFIX : <http://weso.es/shapes/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX schema: <https://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace/>
+
+:Computer
+{
+   uop:versions  BNode  ;                                      # 100.0 %
+   rdf:type  [dpedia:Computer]  ;                              # 100.0 %
+   schema:name  xsd:string  {2};                               # 100.0 %
+   schema:manufacturer  @:Organization                         # 100.0 %
+}
+
+
+:Event
+{
+   rdf:type  [schema:Event]  ;                                 # 100.0 %
+   schema:location  @:City  ;                                  # 100.0 %
+   uop:references  IRI  ;                                      # 100.0 %
+   schema:name  xsd:string  ;                                  # 100.0 %
+   schema:director  @:Person  ;                                # 100.0 %
+   rdfs:comment  xsd:string                                    # 100.0 %
+}
+
+
+:Person
+{
+   schema:name  xsd:string  *;
+            # 88.88888888888889 % obj: xsd:string. Cardinality: +
+            # 55.55555555555556 % obj: xsd:string. Cardinality: {2}
+            # 33.33333333333333 % obj: xsd:string. Cardinality: {1}
+   foaf:age  xsd:integer  ?;
+            # 88.88888888888889 % obj: xsd:integer. Cardinality: {1}
+   uop:characterRole  xsd:string  ?;
+            # 88.88888888888889 % obj: xsd:string. Cardinality: {1}
+   rdf:type  [schema:Person]  ?;
+            # 88.88888888888889 % obj: schema:Person. Cardinality: {1}
+   foaf:gender  xsd:string  ?;
+            # 88.88888888888889 % obj: xsd:string. Cardinality: {1}
+   schema:employmentUnit  @:Organization  ?;
+            # 66.66666666666666 % obj: @:Organization. Cardinality: {1}
+   schema:hasOccupation  BNode  ?;
+            # 55.55555555555556 % obj: BNode. Cardinality: {1}
+   schema:deathPlace  @:City  ?;
+            # 44.44444444444444 % obj: @:City. Cardinality: {1}
+   schema:children  @:Person  *;
+            # 22.22222222222222 % obj: @:Person. Cardinality: {2}
+   schema:parent  @:Person  *;
+            # 22.22222222222222 % obj: @:Person. Cardinality: {2}
+   schema:sibling  @:Person  ?
+            # 22.22222222222222 % obj: @:Person. Cardinality: {1}
+}
+
+
+:Organization
+{
+   schema:name  xsd:string  ;                                  # 100.0 %
+   rdf:type  [schema:Organization]  ;                          # 100.0 %
+   schema:location  @:City  ?;
+            # 66.66666666666666 % obj: @:City. Cardinality: {1}
+   uop:references  IRI  ?;
+            # 66.66666666666666 % obj: IRI. Cardinality: {1}
+   schema:founder  BNode  ?;
+            # 33.33333333333333 % obj: BNode. Cardinality: {1}
+   uop:location  @:City  ?
+            # 33.33333333333333 % obj: @:City. Cardinality: {1}
+}
+
+
+:Q15836568
+{
+   uop:grantsAccessTo  @:Computer_network  ;                   # 100.0 %
+   rdf:type  [wd:Q15836568]  ;                                 # 100.0 %
+   schema:version  xsd:integer  ;                              # 100.0 %
+   schema:name  xsd:string  ;                                  # 100.0 %
+   uop:references  IRI  ;                                      # 100.0 %
+   schema:creator  @:God  ?;
+            # 50.0 % obj: @:God. Cardinality: {1}
+            # 50.0 % obj: @:Person. Cardinality: {1}
+   uo:worksThrough  @:Q1293220  ?
+            # 50.0 % obj: @:Q1293220. Cardinality: {1}
+}
+
+
+:Computer_network
+{
+   rdf:type  [dpedia:Computer_network]  ;                      # 100.0 %
+   rdfs:subClassOf  IRI  ;                                     # 100.0 %
+   uop:references  IRI  ;                                      # 100.0 %
+   schema:name  xsd:string                                     # 100.0 %
+}
+
+
+:GameGenre
+{
+   rdf:type  [vgo:GameGenre]  ;                                # 100.0 %
+   rdf:subclassOf  IRI  ;                                      # 100.0 %
+   owl:sameAs  IRI  ;                                          # 100.0 %
+   rdfs:comment  xsd:string  ;                                 # 100.0 %
+   rdfs:label  xsd:string                                      # 100.0 %
+}
+
+
+:Operating_system
+{
+   rdf:type  [dpedia:Operating_system]  ;                      # 100.0 %
+   schema:manufacturer  @:Organization  ?;
+            # 50.0 % obj: @:Organization. Cardinality: {1}
+   uop:references  IRI  ?;
+            # 50.0 % obj: IRI. Cardinality: {1}
+   schema:name  xsd:string  ?;
+            # 50.0 % obj: xsd:string. Cardinality: {1}
+   rdfs:comment  xsd:string  ?;
+            # 50.0 % obj: xsd:string. Cardinality: {1}
+   rdfs:label  xsd:string  ?
+            # 50.0 % obj: xsd:string. Cardinality: {1}
+}
+
+
+:God
+{
+   schema:hasOccupation  BNode  ;                              # 100.0 %
+   rdf:type  [uo:God]  ;                                       # 100.0 %
+   rdf:type  [schema:Person]  ;                                # 100.0 %
+   schema:deathPlace  @:City  ;                                # 100.0 %
+   foaf:age  xsd:integer  ;                                    # 100.0 %
+   foaf:gender  xsd:string  ;                                  # 100.0 %
+   schema:employmentUnit  @:Organization  ;                    # 100.0 %
+   schema:name  xsd:string  {2};                               # 100.0 %
+   uop:characterRole  xsd:string                               # 100.0 %
+}
+
+
+:NAVI
+{
+   schema:name  xsd:string  ;                                  # 100.0 %
+   schema:manufacturer  @:Organization  ;                      # 100.0 %
+   rdf:type  [uo:NAVI]  ;                                      # 100.0 %
+   schema:operatingSystem  @:Operating_system  ;               # 100.0 %
+   schema:version  xsd:integer  ;                              # 100.0 %
+   uop:references  IRI  ;                                      # 100.0 %
+   uop:usesProtocol  @:Q15836568  ?;
+            # 66.66666666666666 % obj: @:Q15836568. Cardinality: {1}
+   schema:alternateName  xsd:string  ?;
+            # 33.33333333333333 % obj: xsd:string. Cardinality: {1}
+   owl:sameAs  IRI  ?;
+            # 33.33333333333333 % obj: IRI. Cardinality: {1}
+   uop:hasComponent  @:Product  ?
+            # 33.33333333333333 % obj: @:Product. Cardinality: {1}
+}
+
+
+:ComputerCode
+{
+   foaf:image  IRI  ;                                          # 100.0 %
+   uop:references  IRI  ;                                      # 100.0 %
+   schema:name  xsd:string  ;                                  # 100.0 %
+   rdf:type  [uo:ComputerCode]  ;                              # 100.0 %
+   schema:creator  @:Person  ;                                 # 100.0 %
+   rdfs:comment  xsd:string  ;                                 # 100.0 %
+   schema:programmingLanguage  IRI                             # 100.0 %
+}
+
+
+:WebPage
+{
+   schema:name  xsd:string  ;                                  # 100.0 %
+   rdf:type  [schema:WebPage]  ;                               # 100.0 %
+   rdfs:comment  xsd:string  ;                                 # 100.0 %
+   schema:creator  @:Person  ;                                 # 100.0 %
+   schema:significantLink  IRI  {2}                            # 100.0 %
+}
+
+
+:Electrical_device
+{
+   schema:location  @:City  ;                                  # 100.0 %
+   schema:creator  @:Person  ;                                 # 100.0 %
+   rdf:type  [dpedia:Electrical_device]  ;                     # 100.0 %
+   schema:name  xsd:string                                     # 100.0 %
+}
+
+
+:City
+{
+   owl:sameAs  IRI  ;                                          # 100.0 %
+   schema:alternateName  xsd:string  ;                         # 100.0 %
+   schema:longitude  xsd:float  ;                              # 100.0 %
+   rdfs:label  xsd:string  ;                                   # 100.0 %
+   rdf:type  [schema:City]  ;                                  # 100.0 %
+   schema:latitude  xsd:float  ;                               # 100.0 %
+   schema:containedInPlace  IRI                                # 100.0 %
+}
+
+
+:Product
+{
+   schema:name  xsd:string  ;                                  # 100.0 %
+   rdf:type  [schema:Product]  ;                               # 100.0 %
+   schema:manufacturer  @:Organization  ;                      # 100.0 %
+   uop:usesProtocol  @:Q15836568                               # 100.0 %
+}
+
+
+:VideoGame
+{
+   foaf:image  IRI  ;                                          # 100.0 %
+   schema:name  xsd:string  ;                                  # 100.0 %
+   schema:device  @:Electrical_device  ;                       # 100.0 %
+   vgo:hasGameGenere  @:GameGenre  ;                           # 100.0 %
+   rdf:type  [schema:VideoGame]                                # 100.0 %
+}
+
+
+:Q1293220
+{
+   rdfs:comment  xsd:string  ;                                 # 100.0 %
+   owl:sameAs  IRI  ;                                          # 100.0 %
+   schema:name  xsd:string  ;                                  # 100.0 %
+   uop:references  IRI  ;                                      # 100.0 %
+   rdf:type  [wd:Q1293220]                                     # 100.0 %
+}
+
+

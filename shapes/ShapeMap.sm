@@ -19,4 +19,5 @@ PREFIX schema: <http://schema.org/>
 select ?item where {
 ?item schema:creator ?person
 }
-"""@<CreatedItemShape>
+"""@<CreatedItemShape>,
+uo:PHANTOMa@<SchemaVideoGame>
