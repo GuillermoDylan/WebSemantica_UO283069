@@ -1,9 +1,11 @@
 html, body {
-  font-family: Arial, sans-serif;
+  font-family: Courier, CourierNewPS-BoldMT, 'Courier New Bold', 'Courier New Fett', monospace, Arial, sans-serif;
   width: 100%;
   height: 100%;
   overflow: hidden;
   margin: 0;
+  background-color: black;
+  color: white;
 }
 
 #root {
@@ -60,4 +62,18 @@ html, body {
 .fading-exit-active {
   opacity: 0;
   transition: opacity 200ms;
+}
+
+.css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root {
+  color: #1976d2;
+  background: white;
+}
+
+#\:r0\:-label {
+  background: white;
+}
+
+#root > div > div:nth-child(1) > div > div > div{
+  background-color: white;
+  color: black;
 }

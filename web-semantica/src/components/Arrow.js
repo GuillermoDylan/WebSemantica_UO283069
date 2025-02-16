@@ -11,7 +11,7 @@ const Arrow = ({ direction, onClick }) => {
   };
 
   return (
-    <IconButton disableRipple={true} aria-label="delete" size="large" style={{ ...arrowStyles[direction]}} onClick={onClick}>
+    <IconButton disableRipple={true} aria-label="delete" size="large" style={{ ...arrowStyles[direction], color: "white"}} onClick={onClick}>
         <ArrowBackIosNewIcon style={{ fontSize: "50px" }} />
     </IconButton>
   );

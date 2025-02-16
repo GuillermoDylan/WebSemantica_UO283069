@@ -91,6 +91,7 @@ uo:Protocol7 a wd:Q15836568 ; # Computer network protocol
     schema:version 7 ;
     uop:references wd:Q28823658 ;
     schema:creator uo:MasamiEiri ;
+    schema:image <https://lain.wiki/images/6/6f/Eiri_masami_and_protocol_7.jpeg>;
     uo:worksThrough uo:SchumannResonances ;
     uop:grantsAccessTo uo:TheWired .
 
@@ -173,6 +174,7 @@ uo:KensingtonExperiment a schema:Event ;
 uo:KIDS a dpedia:Electrical_device;
     schema:name "KIDS System" ;
     schema:location uo:Tokyo ;
+    schema:image <https://lain.wiki/images/d/de/KIDS_Prototype.jpeg> ;
     schema:creator uo:ProfessorHodgeson .
 
 uo:PHANTOMa a schema:VideoGame ;
@@ -191,6 +193,7 @@ uo:Mebious a schema:WebPage ;
     schema:name "Mebious.co.uk" ;
     rdfs:comment "A website on the Wired." ;
     schema:creator uo:Lain_Iwakura ;
+    schema:image <https://lain.wiki/images/7/75/Mobious.co.uk.png> ;
     schema:significantLink <http://www.mebious.co.uk/> ;
     schema:significantLink <http://www.mebious.mobi/> .
 
@@ -229,7 +232,7 @@ uo:LinSuiXi a schema:Person ;
 uo:CRowView.CL a uo:ComputerCode ;
     schema:name "CRowView.CL" ;
     rdfs:comment "CRowView.CL contains code for John Conway's Game of Life." ;
-    foaf:image <https://lain.wiki/wiki/File:Life.jpg> ;
+    foaf:image <https://lain.wiki/images/5/5e/Life.jpg> ;
     schema:creator uo:Lain_Iwakura ;
     uop:references wd:Q244615;
     schema:programmingLanguage  wd:Q849146 .
@@ -237,7 +240,7 @@ uo:CRowView.CL a uo:ComputerCode ;
 uo:Afx-n-nPrv-View.CL a uo:ComputerCode ;
     schema:name "Afx-n-nPrv-View.CL" ;
     rdfs:comment "Afx-n-nPrv-View.CL is the source for a code walker." ;
-    foaf:image <https://lain.wiki/wiki/File:Walker.jpg> ;
+    foaf:image <https://lain.wiki/images/a/ad/Walker.jpg> ;
     schema:creator uo:Lain_Iwakura ;
     uop:references wd:Q312 ;
     schema:programmingLanguage  wd:Q849146 .

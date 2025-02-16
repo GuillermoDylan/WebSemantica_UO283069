@@ -3,7 +3,7 @@ import Arrow from "./Arrow";
 import { styles } from "../utils/ConstantsUtils";
 import { itemNode } from "../utils/RDFaUtils";
 
-const ItemNode = ({ handleBackwardsTransition, handleTransition, renderValues, getRelationshipValues }) => {
+const ItemNode = ({ nodeId, handleBackwardsTransition, handleTransition, renderValues, getRelationshipValues, handleExternalUriTransition }) => {
 
   const handleKeyDown = async (e) => {
     if (e.key === "ArrowRight") {
@@ -15,23 +15,24 @@ const ItemNode = ({ handleBackwardsTransition, handleTransition, renderValues, g
   }
 
   const renderUrls = (values) => {
-    return (
+    return values.length > 0 ? (
         <>
             <h3>Significant links</h3>
             <ul style={{ listStyleType: "none", padding: 0 }}>
                 {values.map((value, index) => (
                     <li key={index}>
-                        <a href={value} target="_blank" rel="noopener noreferrer">{value}</a>
+                        <a property={itemNode.property.significantLink} href={value} target="_blank" rel="noopener noreferrer">{value}</a>
                     </li>
                 ))}
             </ul>
         </>
-    );
+    ) : <></>;
   }
 
 
   return (
-    <div style={styles.nodeWrapper} onKeyDown={handleKeyDown} tabIndex={1} {...itemNode.wrapper}>
+    <div style={styles.nodeWrapper} onKeyDown={handleKeyDown} 
+    tabIndex={1} typeof={getRelationshipValues("type")} resource={nodeId}>
       <div style={styles.arrowLeft}>
         <Arrow direction="left" onClick={handleBackwardsTransition} />
         <p>Previous node</p>
@@ -51,26 +52,23 @@ const ItemNode = ({ handleBackwardsTransition, handleTransition, renderValues, g
                 (() => {
                   var comment = renderValues(getRelationshipValues('comment'));
                   if(comment.length > 0){
-                    console.log(comment);
                     return comment;
                   }
                   return renderValues(getRelationshipValues('rdf-schema#comment'));
                 })()
               }
             </p>
-            <p property={itemNode.property.significantLink}>{renderUrls(getRelationshipValues('significantLink'))}</p>
-            <p property={itemNode.property.image}>{<img style={{width: 350, height: "auto"}} src={getRelationshipValues('image')}/>}</p>
-            {getRelationshipValues('programmingLanguage').length > 0 && <p property={itemNode.property.programmingLanguage}>Programming Language used:<a href={getRelationshipValues('programmingLanguage')}>Link</a></p>}
+            <p>{renderUrls(getRelationshipValues('significantLink'))}</p>
+            <p>{<img property={itemNode.property.image} style={{width: 350, height: "auto"}} src={getRelationshipValues('image')}/>}</p>
+            {Number.isInteger(parseInt(getRelationshipValues('version')[0])) && <p>Version <span property={itemNode.property.version}>{getRelationshipValues('version')[0]}</span></p>}
+            {getRelationshipValues('programmingLanguage').length > 0 && <p>Programming Language used:<a property={itemNode.property.programmingLanguage} href={getRelationshipValues('programmingLanguage')}>Link</a></p>}
         </div>
         <div  style={styles.arrowDown}>
-          {getRelationshipValues('references').length > 0 && <><Arrow direction="down" onClick={() => handleTransition("references")}/><p>References</p></>}
+          {getRelationshipValues('references').length > 0 && <><Arrow direction="down" onClick={() => handleExternalUriTransition(getRelationshipValues("references")[0])}/><p>References</p></>}
         </div>
       </div>
       <div style={styles.arrowRight}>
-        {getRelationshipValues('version').length > 0 && <><Arrow direction="right" onClick={() => handleTransition("version")}/><p>Version</p></>
-        ||
-        <p>Random Item?</p>
-        }
+        {getRelationshipValues('version').length > 0 && !Number.isInteger(parseInt(getRelationshipValues('version')[0])) &&<><Arrow direction="right" onClick={() => handleTransition("version")}/><p>Version</p></>}
       </div>
     </div>
   );

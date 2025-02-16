@@ -6,16 +6,16 @@ import React, { useState, useEffect } from 'react';
 
 const SearchBar = ({setSearchedNode}) => {
 
-    const [searchQuery, setSearchQuery] = useState("Lain");
+    const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
 
     useEffect(() => {
-        searchNode(searchQuery).then((results) => {
+        searchNode("").then((results) => {
             setSearchResults(results);
             setSearchResults(results);
         });
-    }, [searchQuery]);
+    }, []);
 
     return (
         <div style={{position: 'absolute', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
@@ -32,7 +32,7 @@ const SearchBar = ({setSearchedNode}) => {
                     setSearchQuery(newInputValue);
                     setFilteredResults(searchResults.filter((result) => result.label.toLowerCase().includes(newInputValue.toLowerCase())));
                 }}
-                renderInput={(params) => <TextField {...params} label="Node searcher" />}
+                renderInput={(params) => <TextField sx={{backgroundColor: 'white'}} {...params} label="Node searcher" />}
             />
             <Button variant="contained" href="#contained-buttons" sx={{marginTop: 5, marginLeft: 2}}
             onClick={() => {

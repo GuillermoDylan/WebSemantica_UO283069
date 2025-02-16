@@ -30,7 +30,7 @@ const PersonNode = ({handleBackwardsTransition, handleTransition, renderValues, 
       if(currentNode != undefined){
         visitedNodes.push(currentNode);
         var person = await fetchRandomPersonNode(visitedNodes);
-        if(person != undefined && person.includes("example.org"))
+        if(person != undefined && person.includes("uniovi.es"))
           handleUriTransition(person);
         else 
           visitedNodes.pop();
@@ -47,7 +47,8 @@ const PersonNode = ({handleBackwardsTransition, handleTransition, renderValues, 
     }
 
     return (
-        <div style={styles.nodeWrapper} onKeyDown={handleKeyDown} tabIndex={1} {...personNode.wrapper}>
+        <div style={styles.nodeWrapper} onKeyDown={handleKeyDown} 
+        tabIndex={1} {...personNode.wrapper}  resource={currentNode}> 
           <div style={styles.arrowLeft}>
             <Arrow direction="left" onClick={async () => { await handleBackwardsTransition(); } } />
             <p>Previous node</p>
@@ -60,16 +61,19 @@ const PersonNode = ({handleBackwardsTransition, handleTransition, renderValues, 
               </>} 
             </div>
             <div style={styles.nodeInfo}>
-                <h2 property={personNode.property.name}>{renderValues(getRelationshipValues('name'))}</h2>
-                <p property={personNode.property.gender}>Gender: {renderValues(getRelationshipValues('gender'))}</p>
-                <p property={personNode.property.age}>Age: {renderValues(getRelationshipValues('age'))}</p>
+                <h2>{renderValues(getRelationshipValues('name'), personNode.property.name)}</h2>
+                <p>Gender: <span property={personNode.property.gender}>{renderValues(getRelationshipValues('gender'))}</span></p>
+                <p>Age: <span property={personNode.property.age}>{renderValues(getRelationshipValues('age'))}</span></p>
                 {getRelationshipValues('parent').length > 0 && 
-                  <p property={personNode.property.parent}>Parents: {renderValues(getRelationshipValues('parent'))}</p>}
+                  <p>Parents: {renderValues(getRelationshipValues('parent'), personNode.property.parent)}</p>}
                 {getRelationshipValues('sibling').length > 0 && 
-                  <p property={personNode.property.sibling}>Siblings: {renderValues(getRelationshipValues('sibling'))}
+                  <p>Siblings: {renderValues(getRelationshipValues('sibling'), personNode.property.sibling)}
+                  </p>}
+                  {getRelationshipValues('children').length > 0 && 
+                  <p>Children: {renderValues(getRelationshipValues('children'), personNode.property.chidlren)}
                   </p>}
                 {getRelationshipValues('characterRole').length > 0 && 
-                  <p property={personNode.property.characterRole}>Character Role: {renderValues(getRelationshipValues('characterRole'))}</p>}
+                  <p>Character Role: <span property={personNode.property.characterRole}>{renderValues(getRelationshipValues('characterRole'))}</span></p>}
                 {items.length > 1 && (
                   <div>
                     <h3>Creator of:</h3>

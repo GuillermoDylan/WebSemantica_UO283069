@@ -1,7 +1,9 @@
 .App {
   text-align: center;
   font-family: 'Love Letter TW', cursive;
-  src: url("/resources/Lovelt__.ttf") format("ttf"),
+  src: url("/resources/Lovelt__.ttf") format("ttf");
+  background-color: black;
+  color: white;
 }
 
 .App-logo {
