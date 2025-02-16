@@ -1,0 +1,20 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX uo: <http://uniovi.es/miw/uo283069/entity/> 
+PREFIX uop: <http://uniovi.es/miw/uo283069/property/> 
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+
+SELECT ?object ?name ?subject ?subjectLabel
+WHERE {
+    ?object uop:references ?subject .
+    ?object schema:name ?name . 
+    
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?subject rdfs:label ?subjectLabel .
+        FILTER (LANG(?subjectLabel) = "en")
+    }
+}

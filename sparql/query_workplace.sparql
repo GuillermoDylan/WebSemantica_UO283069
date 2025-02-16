@@ -1,0 +1,14 @@
+PREFIX schema: <http://schema.org/>
+
+SELECT ?japaneseName ?personName ?occupationLabel ?placeOfOccupation
+WHERE {
+    ?person a schema:Person  .
+    OPTIONAL { ?person schema:name ?japaneseName . FILTER (LANG(?japaneseName) = "ja") }
+    ?person schema:name ?personName .
+    ?person schema:hasOccupation ?occupation .
+    ?occupation a schema:Occupation .
+    ?occupation schema:name ?occupationLabel .
+    OPTIONAL { ?person schema:employmentUnit ?placeOfOccupation }
+
+    FILTER (LANG(?personName) = "en")
+}

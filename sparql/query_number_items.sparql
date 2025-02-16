@@ -1,0 +1,9 @@
+PREFIX uo: <http://uniovi.es/miw/uo283069/entity/>
+PREFIX schema: <http://schema.org/>
+PREFIX dpedia: <http://dbpedia.org/resource/>
+
+SELECT (COUNT(?object) AS ?count) 
+WHERE {
+  ?object a ?type .
+  VALUES ?type { uo:ComputerCode schema:WebPage schema:VideoGame dpedia:Electrical_device dpedia:Computer_network dpedia:Computer dpedia:Operating_system }
+}
